@@ -3,62 +3,104 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lilly Liama • AI Companion</title>
+  <title>LillyLiama.ai • AI Solutions That Grow Your Business</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <style>
     body { font-family: 'Inter', system-ui, sans-serif; }
     .hero-bg {
-      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a0033 100%);
+    }
+    .logo-gradient {
+      background: linear-gradient(90deg, #00f0ff, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .accent-gradient {
+      background: linear-gradient(90deg, #00f0ff, #a855f7);
     }
   </style>
 </head>
-<body class="bg-gray-950 text-white">
+<body class="bg-black text-white overflow-x-hidden">
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 bg-black/80 backdrop-blur-md border-b border-purple-500/20">
+    <div class="max-w-6xl mx-auto px-6 py-5 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 accent-gradient rounded-xl flex items-center justify-center text-2xl">🌸</div>
+        <span class="text-2xl font-bold logo-gradient">LillyLiama.ai</span>
+      </div>
+      <div class="hidden md:flex gap-8 text-sm uppercase tracking-widest">
+        <a href="#services" class="hover:text-purple-400 transition">Services</a>
+        <a href="#about" class="hover:text-purple-400 transition">About</a>
+        <a href="#contact" class="hover:text-purple-400 transition">Contact</a>
+      </div>
+    </div>
+  </nav>
+
   <!-- Hero -->
-  <section class="hero-bg min-h-screen flex items-center justify-center text-center px-6">
-    <div>
-      <h1 class="text-6xl md:text-7xl font-bold mb-4">Lilly Llama</h1>
-      <p class="text-2xl md:text-3xl mb-8 text-purple-200">Your friendly, intelligent AI companion</p>
+  <section class="hero-bg min-h-screen flex items-center justify-center text-center px-6 pt-20">
+    <div class="max-w-4xl mx-auto">
+      <div class="flex justify-center mb-6">
+        <div class="w-32 h-32 accent-gradient rounded-3xl flex items-center justify-center p-4">
+          <!-- You can replace this with your actual logo image later -->
+          <span class="text-7xl">🌸</span>
+        </div>
+      </div>
+      <h1 class="text-6xl md:text-7xl font-bold mb-4">
+        Lilly<span class="logo-gradient">Liama</span>.ai
+      </h1>
+      <p class="text-2xl md:text-3xl text-purple-300 mb-8">
+        AI Solutions That Grow Your Business
+      </p>
       <a href="#chat" 
-         class="bg-white text-purple-700 px-10 py-4 rounded-full text-xl font-semibold hover:bg-purple-100 transition">
-        Chat with Lilly →
+         class="inline-block accent-gradient text-black font-semibold px-10 py-5 rounded-2xl text-xl hover:scale-105 transition transform">
+        Start Your AI Journey →
       </a>
     </div>
   </section>
 
-  <!-- Features -->
-  <section class="py-20 px-6 max-w-6xl mx-auto">
-    <h2 class="text-4xl font-bold text-center mb-12">What can I do for you?</h2>
+  <!-- Tagline Bar -->
+  <div class="py-6 bg-gradient-to-r from-transparent via-purple-900/30 to-transparent text-center text-sm tracking-widest text-purple-400">
+    Helping businesses bloom with intelligent AI
+  </div>
+
+  <!-- Features / Services -->
+  <section id="services" class="py-24 px-6 max-w-6xl mx-auto">
+    <h2 class="text-4xl font-bold text-center mb-16">AI That Works For You</h2>
     <div class="grid md:grid-cols-3 gap-8">
-      <div class="bg-gray-900 p-8 rounded-3xl">
-        <i class="fa-solid fa-brain text-4xl mb-4 text-purple-400"></i>
-        <h3 class="text-2xl font-semibold mb-3">Smart Conversations</h3>
-        <p class="text-gray-400">Natural, fun, and context-aware chats about anything.</p>
+      <div class="bg-zinc-950 border border-purple-500/20 p-8 rounded-3xl hover:border-purple-500 transition group">
+        <div class="accent-gradient w-14 h-14 rounded-2xl flex items-center justify-center mb-6 text-3xl">🤖</div>
+        <h3 class="text-2xl font-semibold mb-3">AI Consulting & Strategy</h3>
+        <p class="text-gray-400">Custom AI roadmaps tailored to your business goals.</p>
       </div>
-      <div class="bg-gray-900 p-8 rounded-3xl">
-        <i class="fa-solid fa-image text-4xl mb-4 text-purple-400"></i>
-        <h3 class="text-2xl font-semibold mb-3">Creative Generation</h3>
-        <p class="text-gray-400">Stories, ideas, images, code, and more.</p>
+      <div class="bg-zinc-950 border border-purple-500/20 p-8 rounded-3xl hover:border-purple-500 transition group">
+        <div class="accent-gradient w-14 h-14 rounded-2xl flex items-center justify-center mb-6 text-3xl">📈</div>
+        <h3 class="text-2xl font-semibold mb-3">Automation & Efficiency</h3>
+        <p class="text-gray-400">Streamline operations with intelligent automation.</p>
       </div>
-      <div class="bg-gray-900 p-8 rounded-3xl">
-        <i class="fa-solid fa-heart text-4xl mb-4 text-purple-400"></i>
-        <h3 class="text-2xl font-semibold mb-3">Always Here</h3>
-        <p class="text-gray-400">Supportive companion who remembers you.</p>
+      <div class="bg-zinc-950 border border-purple-500/20 p-8 rounded-3xl hover:border-purple-500 transition group">
+        <div class="accent-gradient w-14 h-14 rounded-2xl flex items-center justify-center mb-6 text-3xl">🌱</div>
+        <h3 class="text-2xl font-semibold mb-3">Growth Solutions</h3>
+        <p class="text-gray-400">AI-powered marketing, sales, and customer experience.</p>
       </div>
     </div>
   </section>
 
   <!-- Call to Action -->
-  <section class="py-20 bg-black text-center">
-    <h2 class="text-5xl font-bold mb-6">Ready to meet Lilly?</h2>
-    <a href="https://chat.lillyliama.ai" 
-       class="inline-block bg-purple-600 hover:bg-purple-700 px-12 py-5 rounded-2xl text-2xl font-bold transition">
-      Start Chatting Now
-    </a>
+  <section class="py-24 bg-zinc-950 text-center">
+    <div class="max-w-2xl mx-auto px-6">
+      <h2 class="text-5xl font-bold mb-6">Ready to make your business bloom?</h2>
+      <p class="text-xl text-gray-400 mb-10">Let’s build intelligent solutions together.</p>
+      <a href="mailto:hello@lillyliama.ai" 
+         class="inline-block bg-white text-black px-12 py-5 rounded-2xl text-xl font-semibold hover:bg-purple-200 transition">
+        Get In Touch
+      </a>
+    </div>
   </section>
 
-  <footer class="py-12 text-center text-gray-500">
-    <p>© 2026 Lilly Liama AI • Made with ❤️</p>
+  <footer class="py-12 text-center border-t border-purple-900/30 text-gray-500 text-sm">
+    <p>© 2026 LillyLiama.ai • All Rights Reserved</p>
+    <p class="mt-2">hello@lillyliama.ai</p>
   </footer>
 </body>
 </html>
