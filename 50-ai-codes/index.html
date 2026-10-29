@@ -1,1 +1,963 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>50 AI Codes | Learn AI with Lilly</title>
+
+  <meta name="description"
+        content="50 πρακτικά AI Codes για να μαθαίνεις, να οργανώνεις και να δουλεύεις πιο έξυπνα με την Τεχνητή Νοημοσύνη.">
+
+  <style>
+    :root {
+      --bg: #06111f;
+      --bg2: #0b1b2e;
+      --card: rgba(15, 31, 51, 0.92);
+      --card2: rgba(20, 39, 64, 0.94);
+      --text: #f6f8fc;
+      --muted: #aebed0;
+      --cyan: #2bd6ff;
+      --purple: #9a67ff;
+      --border: rgba(255,255,255,0.10);
+      --success: #8ef0b3;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(43,214,255,0.13), transparent 28%),
+        radial-gradient(circle at 90% 5%, rgba(154,103,255,0.18), transparent 30%),
+        linear-gradient(180deg, #06111f 0%, #081625 55%, #06111f 100%);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(1100px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 26px 0;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(6,17,31,0.86);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      font-weight: 800;
+      font-size: 19px;
+      text-decoration: none;
+      letter-spacing: .2px;
+    }
+
+    .logo span {
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .hero {
+      padding: 78px 0 58px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(43,214,255,0.22);
+      background: rgba(43,214,255,0.07);
+      color: #c9f5ff;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .4px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0 auto 20px;
+      max-width: 850px;
+      font-size: clamp(42px, 8vw, 78px);
+      line-height: .98;
+      letter-spacing: -2.5px;
+    }
+
+    .gradient {
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: clamp(17px, 2.4vw, 21px);
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .how-to {
+      margin: 34px auto 0;
+      max-width: 760px;
+      padding: 18px 22px;
+      border-radius: 18px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.035);
+      color: #dce7f4;
+      line-height: 1.55;
+    }
+
+    .how-to strong {
+      color: white;
+    }
+
+    .categories {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .category-link {
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 10px 15px;
+      border-radius: 999px;
+      color: #dbe9f8;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      transition: .2s ease;
+    }
+
+    .category-link:hover {
+      border-color: rgba(43,214,255,.4);
+      transform: translateY(-1px);
+    }
+
+    section {
+      padding: 34px 0 22px;
+      scroll-margin-top: 90px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(26px, 4vw, 38px);
+    }
+
+    .section-heading p {
+      margin: 5px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .number {
+      font-size: 13px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .code-card {
+      padding: 20px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, var(--card2), var(--card));
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 35px rgba(0,0,0,.18);
+      transition: transform .18s ease, border-color .18s ease;
+    }
+
+    .code-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(43,214,255,0.22);
+    }
+
+    .code-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 13px;
+    }
+
+    code {
+      display: block;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 15px;
+      font-weight: 700;
+      color: #d8f8ff;
+      overflow-wrap: anywhere;
+    }
+
+    .copy-btn {
+      flex: 0 0 auto;
+      border: 0;
+      cursor: pointer;
+      border-radius: 10px;
+      padding: 9px 12px;
+      font-size: 12px;
+      font-weight: 800;
+      color: #07111e;
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+      transition: transform .15s ease, opacity .15s ease;
+    }
+
+    .copy-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .copy-btn.copied {
+      background: var(--success);
+    }
+
+    .code-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 15px;
+    }
+
+    .cta {
+      margin: 62px 0 22px;
+      padding: 42px 28px;
+      text-align: center;
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at top right, rgba(154,103,255,.18), transparent 40%),
+        radial-gradient(circle at bottom left, rgba(43,214,255,.16), transparent 40%),
+        rgba(255,255,255,.035);
+      border: 1px solid var(--border);
+    }
+
+    .cta h2 {
+      margin: 0 0 14px;
+      font-size: clamp(28px, 5vw, 46px);
+    }
+
+    .cta p {
+      max-width: 670px;
+      margin: 0 auto 24px;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .button {
+      display: inline-block;
+      text-decoration: none;
+      padding: 15px 24px;
+      border-radius: 13px;
+      font-weight: 800;
+      color: #07111e;
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+    }
+
+    footer {
+      text-align: center;
+      color: #72839a;
+      padding: 26px 0 42px;
+      font-size: 13px;
+    }
+
+    .disclaimer {
+      max-width: 780px;
+      margin: 38px auto 0;
+      font-size: 12px;
+      line-height: 1.6;
+      color: #76879b;
+      text-align: center;
+    }
+
+    @media (max-width: 720px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 55px;
+      }
+
+      h1 {
+        letter-spacing: -1.6px;
+      }
+
+      .section-heading {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .nav-link {
+        display: none;
+      }
+
+      .code-top {
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="https://lillyliama.ai">
+      Learn AI with <span>Lilly</span>
+    </a>
+
+    <a class="nav-link" href="https://lillyliama.ai">
+      lillyliama.ai
+    </a>
+  </div>
+</header>
+
+
+<main class="container">
+
+  <section class="hero">
+
+    <div class="eyebrow">
+      LEARN AI WITH LILLY
+    </div>
+
+    <h1>
+      50 <span class="gradient">AI Codes</span><br>
+      για να μαθαίνεις πιο έξυπνα
+    </h1>
+
+    <p>
+      50 απλοί τρόποι για να χρησιμοποιήσεις την Τεχνητή Νοημοσύνη
+      σαν προσωπικό tutor — για μάθηση, κατανόηση, εξάσκηση,
+      οργάνωση και δημιουργία.
+    </p>
+
+    <div class="how-to">
+      <strong>Πώς τα χρησιμοποιείς;</strong><br>
+      Αντέγραψε το code, αντικατάστησε το
+      <strong>[TOPIC]</strong> με το θέμα που θέλεις να μάθεις
+      και στείλε το στο AI.
+      <br><br>
+      Παράδειγμα:
+      <strong>/mindmap AI Agents</strong>
+    </div>
+
+    <div class="categories">
+      <a class="category-link" href="#visual">Visualise</a>
+      <a class="category-link" href="#understand">Understand</a>
+      <a class="category-link" href="#analyse">Analyse</a>
+      <a class="category-link" href="#test">Test</a>
+      <a class="category-link" href="#apply">Apply</a>
+    </div>
+
+  </section>
+
+
+  <!-- 1-10 VISUALISE -->
+
+  <section id="visual">
+
+    <div class="section-heading">
+      <div>
+        <h2>01 · Visualise</h2>
+        <p>Δες και οργάνωσε τη γνώση οπτικά.</p>
+      </div>
+      <div class="number">01–10</div>
+    </div>
+
+    <div class="grid">
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/visual study guide [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/visual study guide [TOPIC]')">COPY</button>
+        </div>
+        <p>Δημιούργησε έναν οπτικό οδηγό με τα βασικά σημεία του θέματος σε μία εύκολη σελίδα.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/mindmap [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/mindmap [TOPIC]')">COPY</button>
+        </div>
+        <p>Φτιάξε έναν νοητικό χάρτη που δείχνει πώς συνδέονται οι βασικές ιδέες.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/sticky notes [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/sticky notes [TOPIC]')">COPY</button>
+        </div>
+        <p>Παρουσίασε τις σημαντικότερες πληροφορίες σαν σύντομες αυτοκόλλητες σημειώσεις.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/schematic [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/schematic [TOPIC]')">COPY</button>
+        </div>
+        <p>Δημιούργησε ένα σχηματικό διάγραμμα που εξηγεί τη δομή ή τη λειτουργία του θέματος.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/infographic [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/infographic [TOPIC]')">COPY</button>
+        </div>
+        <p>Μετέτρεψε το θέμα σε ένα εύκολο και οπτικό infographic.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/flowchart [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/flowchart [TOPIC]')">COPY</button>
+        </div>
+        <p>Δείξε τη διαδικασία βήμα-βήμα με διάγραμμα ροής.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/timeline [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/timeline [TOPIC]')">COPY</button>
+        </div>
+        <p>Οργάνωσε τα γεγονότα ή τα στάδια σε χρονολογική σειρά.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/concept map [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/concept map [TOPIC]')">COPY</button>
+        </div>
+        <p>Δείξε τις βασικές έννοιες και τις μεταξύ τους σχέσεις.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/cheat sheet [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/cheat sheet [TOPIC]')">COPY</button>
+        </div>
+        <p>Δημιούργησε ένα σύντομο φύλλο αναφοράς με όσα χρειάζεται να θυμάσαι.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/one pager [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/one pager [TOPIC]')">COPY</button>
+        </div>
+        <p>Συγκέντρωσε τις σημαντικότερες πληροφορίες του θέματος σε μία σελίδα.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- 11-20 UNDERSTAND -->
+
+  <section id="understand">
+
+    <div class="section-heading">
+      <div>
+        <h2>02 · Understand</h2>
+        <p>Κατανόησε δύσκολες έννοιες πιο εύκολα.</p>
+      </div>
+      <div class="number">11–20</div>
+    </div>
+
+    <div class="grid">
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/ELI5 [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/ELI5 [TOPIC]')">COPY</button>
+        </div>
+        <p>Εξήγησέ το σαν να μιλάς σε ένα παιδί 5 ετών.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/ELI10 [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/ELI10 [TOPIC]')">COPY</button>
+        </div>
+        <p>Εξήγησέ το απλά, σαν να απευθύνεσαι σε παιδί 10 ετών.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/beginner [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/beginner [TOPIC]')">COPY</button>
+        </div>
+        <p>Δίδαξέ το από την αρχή, χωρίς να θεωρείς ότι έχω προηγούμενες γνώσεις.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/80-20 [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/80-20 [TOPIC]')">COPY</button>
+        </div>
+        <p>Δίδαξέ μου το σημαντικότερο 20% που θα μου δώσει το μεγαλύτερο μέρος της κατανόησης.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/feynman [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/feynman [TOPIC]')">COPY</button>
+        </div>
+        <p>Εξήγησέ το με τη μέθοδο Feynman και έλεγξε αν μπορώ να το εξηγήσω με δικά μου λόγια.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/socrates [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/socrates [TOPIC]')">COPY</button>
+        </div>
+        <p>Δίδαξέ με κάνοντας ερωτήσεις που με οδηγούν μόνο μου στην κατανόηση.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/analogy [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/analogy [TOPIC]')">COPY</button>
+        </div>
+        <p>Εξήγησέ το χρησιμοποιώντας μία απλή και κατανοητή αναλογία.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/story [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/story [TOPIC]')">COPY</button>
+        </div>
+        <p>Δίδαξέ το μέσα από μία ιστορία ώστε να είναι πιο εύκολο να το θυμάσαι.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/real world [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/real world [TOPIC]')">COPY</button>
+        </div>
+        <p>Εξήγησέ το με πρακτικά παραδείγματα από την πραγματική ζωή.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/compare [A] vs [B]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/compare [A] vs [B]')">COPY</button>
+        </div>
+        <p>Σύγκρινε τα δύο θέματα και δείξε καθαρά τις βασικές διαφορές τους.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- 21-30 ANALYSE -->
+
+  <section id="analyse">
+
+    <div class="section-heading">
+      <div>
+        <h2>03 · Analyse</h2>
+        <p>Οργάνωσε, σύγκρινε και εμβάθυνε.</p>
+      </div>
+      <div class="number">21–30</div>
+    </div>
+
+    <div class="grid">
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/table [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/table [TOPIC]')">COPY</button>
+        </div>
+        <p>Οργάνωσε τις πληροφορίες σε έναν καθαρό και εύκολο πίνακα.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/pros cons [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/pros cons [TOPIC]')">COPY</button>
+        </div>
+        <p>Παρουσίασε τα βασικά πλεονεκτήματα και μειονεκτήματα.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/before after [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/before after [TOPIC]')">COPY</button>
+        </div>
+        <p>Δείξε τι αλλάζει πριν και μετά.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/why it matters [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/why it matters [TOPIC]')">COPY</button>
+        </div>
+        <p>Εξήγησε γιατί αυτό το θέμα έχει πρακτική σημασία.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/how it works [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/how it works [TOPIC]')">COPY</button>
+        </div>
+        <p>Εξήγησε με απλά λόγια πώς λειτουργεί.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/step by step [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/step by step [TOPIC]')">COPY</button>
+        </div>
+        <p>Δίδαξέ το σε ξεκάθαρα και διαδοχικά βήματα.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/breakdown [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/breakdown [TOPIC]')">COPY</button>
+        </div>
+        <p>Χώρισε το θέμα σε μικρότερα και πιο εύκολα κομμάτια.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/layers [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/layers [TOPIC]')">COPY</button>
+        </div>
+        <p>Εξήγησέ το σε επίπεδα: αρχάριο, ενδιάμεσο και προχωρημένο.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/key terms [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/key terms [TOPIC]')">COPY</button>
+        </div>
+        <p>Δώσε μου τους βασικούς όρους και τι σημαίνει ο καθένας.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/10 things [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/10 things [TOPIC]')">COPY</button>
+        </div>
+        <p>Δώσε μου τα 10 σημαντικότερα πράγματα που πρέπει να γνωρίζω για το θέμα.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- 31-40 TEST -->
+
+  <section id="test">
+
+    <div class="section-heading">
+      <div>
+        <h2>04 · Test</h2>
+        <p>Έλεγξε αν πραγματικά κατάλαβες αυτό που έμαθες.</p>
+      </div>
+      <div class="number">31–40</div>
+    </div>
+
+    <div class="grid">
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/quiz me [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/quiz me [TOPIC]')">COPY</button>
+        </div>
+        <p>Κάνε μου κουίζ, μία ερώτηση κάθε φορά.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/multiple choice [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/multiple choice [TOPIC]')">COPY</button>
+        </div>
+        <p>Δημιούργησε ερωτήσεις πολλαπλής επιλογής.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/true false [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/true false [TOPIC]')">COPY</button>
+        </div>
+        <p>Έλεγξε τις γνώσεις μου με ερωτήσεις σωστό ή λάθος.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/flashcards [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/flashcards [TOPIC]')">COPY</button>
+        </div>
+        <p>Δημιούργησε κάρτες μελέτης με ερώτηση και απάντηση.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/test me hard [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/test me hard [TOPIC]')">COPY</button>
+        </div>
+        <p>Κάνε μου δύσκολες ερωτήσεις για να ελέγξεις αν έχω πραγματικά καταλάβει το θέμα.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/spot my gaps [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/spot my gaps [TOPIC]')">COPY</button>
+        </div>
+        <p>Εντόπισε τα κενά στις γνώσεις ή στην κατανόησή μου.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/teach then quiz [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/teach then quiz [TOPIC]')">COPY</button>
+        </div>
+        <p>Δίδαξέ μου πρώτα το θέμα και μετά κάνε μου κουίζ.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/exam [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/exam [TOPIC]')">COPY</button>
+        </div>
+        <p>Δημιούργησε μία μικρή εξέταση για το θέμα.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/interview me [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/interview me [TOPIC]')">COPY</button>
+        </div>
+        <p>Κάνε μου ερωτήσεις σαν να βρίσκομαι σε συνέντευξη.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/teach back [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/teach back [TOPIC]')">COPY</button>
+        </div>
+        <p>Ζήτησέ μου να σου εξηγήσω το θέμα και μετά διόρθωσε ό,τι δεν έχω καταλάβει σωστά.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- 41-50 APPLY -->
+
+  <section id="apply">
+
+    <div class="section-heading">
+      <div>
+        <h2>05 · Apply</h2>
+        <p>Μετέτρεψε τη γνώση σε πρακτική εφαρμογή.</p>
+      </div>
+      <div class="number">41–50</div>
+    </div>
+
+    <div class="grid">
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/common mistakes [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/common mistakes [TOPIC]')">COPY</button>
+        </div>
+        <p>Δείξε τα συνηθέστερα λάθη που κάνουν οι άνθρωποι γύρω από αυτό το θέμα.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/myths vs facts [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/myths vs facts [TOPIC]')">COPY</button>
+        </div>
+        <p>Ξεχώρισε τους μύθους από τα πραγματικά δεδομένα.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/examples [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/examples [TOPIC]')">COPY</button>
+        </div>
+        <p>Δώσε μου απλά και πρακτικά παραδείγματα.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/use cases [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/use cases [TOPIC]')">COPY</button>
+        </div>
+        <p>Δείξε πού και πώς μπορεί να χρησιμοποιηθεί στην πράξη.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/case study [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/case study [TOPIC]')">COPY</button>
+        </div>
+        <p>Εξήγησε το θέμα μέσα από ένα ρεαλιστικό case study.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/practice [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/practice [TOPIC]')">COPY</button>
+        </div>
+        <p>Δώσε μου μία πρακτική άσκηση για να εφαρμόσω αυτά που έμαθα.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/challenge [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/challenge [TOPIC]')">COPY</button>
+        </div>
+        <p>Δώσε μου μία μικρή πρόκληση που απαιτεί πρακτική εφαρμογή.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/learning plan [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/learning plan [TOPIC]')">COPY</button>
+        </div>
+        <p>Δημιούργησε ένα οργανωμένο πλάνο για να μάθω το θέμα.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/teach in 10 minutes [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/teach in 10 minutes [TOPIC]')">COPY</button>
+        </div>
+        <p>Δίδαξέ μου τα σημαντικότερα μέσα σε ένα σύντομο μάθημα 10 λεπτών.</p>
+      </div>
+
+      <div class="code-card">
+        <div class="code-top">
+          <code>/masterclass [TOPIC]</code>
+          <button class="copy-btn" onclick="copyCode(this, '/masterclass [TOPIC]')">COPY</button>
+        </div>
+        <p>Δημιούργησε ένα ολοκληρωμένο μάθημα από τα βασικά έως τα πιο προχωρημένα.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <div class="cta">
+
+    <h2>
+      Μάθε AI <span class="gradient">στην πράξη.</span>
+    </h2>
+
+    <p>
+      Θέλεις να μάθεις πώς να χρησιμοποιείς την Τεχνητή Νοημοσύνη
+      στην καθημερινή σου εργασία ή στην επιχείρησή σου;
+      Δες περισσότερα στο LillyLiama.ai.
+    </p>
+
+    <a class="button" href="https://lillyliama.ai">
+      Learn AI with Lilly →
+    </a>
+
+  </div>
+
+
+  <div class="disclaimer">
+    Τα παραπάνω “codes” είναι σύντομα reusable prompts / prompt shortcuts
+    που μπορείς να χρησιμοποιήσεις με εργαλεία Τεχνητής Νοημοσύνης.
+    Δεν αποτελούν επίσημες εντολές κάποιας συγκεκριμένης πλατφόρμας
+    και το αποτέλεσμα μπορεί να διαφέρει ανάλογα με το μοντέλο και το context.
+  </div>
+
+</main>
+
+
+<footer>
+  © 2026 LillyLiama.ai · Practical AI Consulting & Training
+</footer>
+
+
+<script>
+  async function copyCode(button, text) {
+
+    try {
+      await navigator.clipboard.writeText(text);
+
+      const original = button.innerText;
+
+      button.innerText = "COPIED ✓";
+      button.classList.add("copied");
+
+      setTimeout(() => {
+        button.innerText = original;
+        button.classList.remove("copied");
+      }, 1600);
+
+    } catch (err) {
+
+      const textarea = document.createElement("textarea");
+
+      textarea.value = text;
+      document.body.appendChild(textarea);
+
+      textarea.select();
+      document.execCommand("copy");
+
+      document.body.removeChild(textarea);
+
+      button.innerText = "COPIED ✓";
+      button.classList.add("copied");
+
+      setTimeout(() => {
+        button.innerText = "COPY";
+        button.classList.remove("copied");
+      }, 1600);
+    }
+  }
+</script>
+
+</body>
+</html>
